@@ -1,0 +1,9 @@
+---
+- name: Create an empty file
+  hosts: all
+  become: true
+  tasks:
+    - name: Create an empty file
+      file:
+        name: myfile.txt
+        state: touch

@@ -1,0 +1,11 @@
+---
+- name: this playbook is used to create a user
+  hosts: all
+  become: yes
+  tasks:
+  - name: createing file
+    file:
+    name: myfile.txt 
+    state: touch
+    mode: 0777
+...
