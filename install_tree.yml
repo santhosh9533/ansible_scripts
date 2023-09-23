@@ -1,0 +1,10 @@
+---
+- name: this playbook is used to install tree package in all nodes
+  hosts: webhosts
+  become: yes
+  tasks:
+  - name: Installing tree
+    yum:
+      name: tree
+      state: present
+...

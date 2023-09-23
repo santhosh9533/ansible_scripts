@@ -1,0 +1,15 @@
+---
+- name: this playbook is used to install httpd in all nodes
+  hosts: webhosts
+  become: yes
+  tasks:
+  - name: installing httpd
+    yum:
+      name: httpd
+      state: installed
+  - name: Starting http service
+    service:
+      name: httpd
+      state: started
+      enabled: yes
+...

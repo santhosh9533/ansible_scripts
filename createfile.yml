@@ -1,0 +1,11 @@
+---
+- name: this playbook is used to create a file
+  hosts: all
+  become: yes
+  tasks: 
+  - name: creating file
+    file:
+      name: demo.java
+      state: touch
+      mode: 0755
+...

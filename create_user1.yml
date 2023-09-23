@@ -1,0 +1,12 @@
+---
+- name: this playbook is used to create user
+  hosts: all
+  become: yes
+  tasks:
+  - name: creating user
+    user:
+      name: lahari
+      state: present
+      group: sskr
+      home: /home/sskr
+      uid: 1024      

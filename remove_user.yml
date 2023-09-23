@@ -1,0 +1,10 @@
+---
+- name: this playbook is used to delete user
+  hosts: all
+  become: yes
+  tasks:
+  - name: Removing user
+    user:
+      name: lahari
+      state: absent
+

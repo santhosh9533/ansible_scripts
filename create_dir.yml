@@ -1,0 +1,10 @@
+---
+- name: this playbook is used to create directory
+  hosts: all
+  become: yes
+  tasks:
+    - name: creating directory
+      file:
+        name: ansible_dir
+        state: directory
+        mode: 0777

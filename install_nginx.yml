@@ -1,0 +1,34 @@
+---
+- name: Install Nginx and Change Port
+  hosts: all  # Replace with the target hosts or group name
+  become: yes  # To execute tasks with sudo privileges
+
+  tasks:
+    - name: create directory
+      file:
+        name: default
+        path: /etc/ngins/sites-available
+        state: directory
+    - name: Update package cache (for Debian-based systems)
+      yum:
+        update_cache: yes
+      when: ansible_os_family == 'redhat'
+
+    - name: Install Nginx
+      package:
+        name: nginx
+        state: present
+
+    - name: Change Nginx port
+      lineinfile:
+        path: /etc/nginx/sites-available/default
+        regexp: '^(\s*listen\s*)\d+;$'
+        line: '    listen 8090;  # Change to your desired port'
+      notify:
+        - Restart Nginx
+
+    - name: Restart Nginx
+      service:
+        name: nginx
+        state: restarted
+
